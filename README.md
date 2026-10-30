@@ -1,5 +1,8 @@
 # 会话搜索栏 · dsh-session-search-bar
 
+[![npm](https://img.shields.io/npm/v/dsh-session-search-bar.svg)](https://www.npmjs.com/package/dsh-session-search-bar)
+[![license](https://img.shields.io/npm/l/dsh-session-search-bar.svg)](./LICENSE)
+
 **DeepSeek Harness 插件**：一个常驻在对话页顶部的搜索栏。输入关键词即可搜索所有历史会话的
 **消息正文**，结果就地弹在输入框下方；点击结果会打开对应会话，并把对话滚动到**命中的那段文字**。
 
