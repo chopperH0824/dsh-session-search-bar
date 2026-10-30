@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Session Search",
+    "description": "Search the message content of past sessions by keyword, and jump to the matching message."
+  }
+}

@@ -1,0 +1,29 @@
+# Bundle patch for dsh-session-search-bar.
+#
+# The shipped profile mounts the session-query index with `openAt: never`, so
+# the default `ctx.sessionQuery` cannot answer full-text searches (the built-in
+# sidebar content search silently degrades to title matching for that reason).
+# This bundle therefore owns an isolated, lazy, in-memory index — the same
+# shape as the shipped `@deepseek-ai/dsh-experimental-session-search` bundle:
+#
+#   - group row: isolates `sessionQuery` from the profile's metadata-only one;
+#   - `session-query-sqlite` with `path: ':memory:'`, `openAt: first-search`:
+#     built on the first search and released when the bundle is switched off;
+#   - the plugin row reads that index over its HTTP route.
+#
+# Everything else (webServer, persistence, sessions) still resolves from the
+# parent composition, because only `sessionQuery` is isolated.
+- insert:
+    - id: session-search
+      name: 'cordis:group'
+      group: true
+      isolate:
+        sessionQuery: true
+      config:
+        - id: session-search-query-sqlite
+          name: '@deepseek-ai/dsh-session-query-sqlite'
+          config:
+            path: ':memory:'
+            openAt: first-search
+        - id: session-search-host
+          name: 'dsh-session-search-bar'

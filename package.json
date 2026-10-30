@@ -1,0 +1,67 @@
+{
+  "name": "dsh-session-search-bar",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness 会话搜索栏插件：对话页顶部常驻搜索框，按关键词搜索历史会话的消息正文，点结果直接打开会话并定位到命中的那段文字。A persistent session search bar for DeepSeek Harness: keyword-search message bodies across past sessions and jump straight to the matched text.",
+  "type": "module",
+  "license": "MIT",
+  "author": "chopperH0824",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chopperH0824/dsh-session-search-bar.git"
+  },
+  "homepage": "https://github.com/chopperH0824/dsh-session-search-bar#readme",
+  "bugs": {
+    "url": "https://github.com/chopperH0824/dsh-session-search-bar/issues"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale",
+    "icon.svg",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "session-search",
+    "search",
+    "conversation",
+    "sessions",
+    "keyword-search",
+    "ui",
+    "chat-history",
+    "会话搜索",
+    "搜索"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check client.js",
+    "pack:check": "npm pack --dry-run"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  }
+}
